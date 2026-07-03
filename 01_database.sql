@@ -1,0 +1,35 @@
+CREATE DATABASE StudentManagementDB;
+USE StudentManagementDB;
+
+CREATE TABLE Students (
+StudentID INT PRIMARY KEY AUTO_INCREMENT,
+FirstName VARCHAR(50),
+LastName VARCHAR(50),
+Email VARCHAR(100),
+BirthDate DATE
+);
+
+CREATE TABLE Courses (
+CourseID INT PRIMARY KEY AUTO_INCREMENT,
+CourseName VARCHAR(100),
+Credits INT
+);
+
+CREATE TABLE Instructors (
+InstructorID INT PRIMARY KEY AUTO_INCREMENT,
+InstructorName VARCHAR(100),
+Department VARCHAR(100)
+);
+
+CREATE TABLE Enrollments (
+EnrollmentsID INT PRIMARY KEY AUTO_INCREMENT,
+StudentID INT,
+CourseID INT,
+Grade DECIMAL(4,2),
+
+FOREIGN KEY (StudentID)
+REFERENCES Students(StudentID),
+
+FOREIGN KEY (CourseID)
+REFERENCES Courses(CourseID)
+);
